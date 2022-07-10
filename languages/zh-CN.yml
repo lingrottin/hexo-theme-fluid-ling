@@ -34,9 +34,9 @@ links:
   subtitle: '友情链接'
 
 page404:
-  menu: '页面不存在'
-  title: '页面不存在'
-  subtitle: '页面不存在'
+  menu: '404'
+  title: '404 - 页面不存在'
+  subtitle: '404'
 
 post:
   toc: '目录'
