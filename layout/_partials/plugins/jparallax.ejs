@@ -1,5 +1,5 @@
 <% 
-    var parallaxImages=parseParallaxImages((function(){
+    var parallaxImages=((function(){
         if(page.banner_img_parallax){return page.banner_img_parallax;}
         else if(!(is_home() && page.banner_img)){return [{"source": page.banner_img, "size": theme.banner.parallax.images[0].size || '120%'}];}
         else if(theme.banner.parallax.images){return theme.banner.parallax.images;}
