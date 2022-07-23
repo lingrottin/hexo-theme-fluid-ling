@@ -24,5 +24,5 @@
 window.addEventListener("resize", function () { // 不用 jQuery 的事件是因为 jq 在窗口大小变化完成之后调用，会使图像不自然
 	initjParallax(true)
 });
-$(document).ready(initjParallax(false));</script>`);
+window.onload= initjParallax(false);</script>`);
 %>
