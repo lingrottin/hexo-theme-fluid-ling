@@ -5,13 +5,13 @@ var subtitle = page.subtitle || page.title
 %>
 <% if(theme.banner.parallax.enable && in_scope(theme.banner.parallax.scope)) { %>
 <%
-function parseParallaxImages(){
-  if(page.parallax_images){return page.parallax_images;}
+
+var parallaxImages=parseParallaxImages((function(){
+  if(page.banner_img_parallax){return page.banner_img_parallax;}
   else if(!(is_home() && page.banner_img)){return [{"source": page.banner_img, "size": theme.banner.parallax.images[0].size || '120%'}];}
   else if(theme.banner.parallax.images){return theme.banner.parallax.images;}
   else{return [{"source": theme.index.banner_img, "size": '120%'}];}
-  }
-var parallaxImages=parseParallaxImages();
+})());
 %>
 <div id="banner" class="banner  text-center jparallax-viewport" <%- theme.banner && theme.banner.parallax_scrolling && 'parallax=true' %> style="height:inherit; width:inherit;">
   <% parallaxImages.forEach(function (imgObject,n){ %>

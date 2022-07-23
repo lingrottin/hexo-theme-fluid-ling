@@ -1,11 +1,10 @@
 <% 
-    function parseParallaxImages(){
-    if(page.parallax_images){return page.parallax_images;}
-    else if(page.banner_img){return [{"source": page.banner_img, "size": theme.banner.parallax.images[0].size || '120%'}];}
-    else if(theme.banner.parallax.images){return theme.banner.parallax.images;}
-    else{return [{"source": theme.index.banner_img, "size": '120%'}];}
-    }
-    var parallaxImages=parseParallaxImages();
+    var parallaxImages=parseParallaxImages((function(){
+        if(page.banner_img_parallax){return page.banner_img_parallax;}
+        else if(!(is_home() && page.banner_img)){return [{"source": page.banner_img, "size": theme.banner.parallax.images[0].size || '120%'}];}
+        else if(theme.banner.parallax.images){return theme.banner.parallax.images;}
+        else{return [{"source": theme.index.banner_img, "size": '120%'}];}
+    })());
     var jParallaxArg=new String();
     parallaxImages.forEach(function(imgObject){
         jParallaxArg+=', {';
@@ -23,7 +22,6 @@
 	jQuery('.jparallax-layer').parallax({} ${jParallaxArg});
 };
 window.addEventListener("resize", function () { // 不用 jQuery 的事件是因为 jq 在窗口大小变化完成之后调用，会使图像不自然
-	console.log("resize");
 	initjParallax(true)
 });
 $(document).ready(initjParallax(false));</script>`);
