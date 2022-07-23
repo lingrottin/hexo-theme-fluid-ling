@@ -1,8 +1,9 @@
 .banner
   height 100%
+  width 100%
   position relative
   overflow hidden
-  cursor default
+  //cursor default
 
   .mask
     position absolute
@@ -15,6 +16,15 @@
     -webkit-transform-style preserve-3d
     -webkit-backface-visibility hidden
     transition transform .05s ease-out
+
+.jparallax-layer
+  position absolute
+  background-size cover
+  background-repeat no-repeat
+  background-position center center
+
+.parallax-subtitle
+  position absolute
 
 if $banner-width-height-ratio > 0
   @media (max-width: unit($banner-width-height-ratio * 100, "vh"))

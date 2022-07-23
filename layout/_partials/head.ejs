@@ -37,6 +37,9 @@ var ogConfig = Object.assign({ image: ogImage && url_for(ogImage) }, theme.open_
   <% if (theme.custom_head) { %>
     <%- theme.custom_head %>
   <% } %>
+  <% if(theme.banner.parallax.enable) {%>
+    <%= partial('_partials/plugins/jparallax.ejs') %>
+    <% } %>
   <title><%= title %></title>
 
   <%- partial('_partials/css.ejs') %>

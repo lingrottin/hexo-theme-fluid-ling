@@ -1,11 +1,55 @@
 <%
-var banner_img = page.banner_img || theme.index.banner_img
 var banner_img_height = parseFloat(page.banner_img_height || theme.index.banner_img_height)
 var banner_mask_alpha = parseFloat(page.banner_mask_alpha || theme.index.banner_mask_alpha)
 var subtitle = page.subtitle || page.title
 %>
+<% if(theme.banner.parallax.enable && in_scope(theme.banner.parallax.scope)) { %>
+<%
+function parseParallaxImages(){
+  if(page.parallax_images){return page.parallax_images;}
+  else if(!(is_home() && page.banner_img)){return [{"source": page.banner_img, "size": theme.banner.parallax.images[0].size || '120%'}];}
+  else if(theme.banner.parallax.images){return theme.banner.parallax.images;}
+  else{return [{"source": theme.index.banner_img, "size": '120%'}];}
+  }
+var parallaxImages=parseParallaxImages();
+%>
+<div id="banner" class="banner  text-center jparallax-viewport" <%- theme.banner && theme.banner.parallax_scrolling && 'parallax=true' %> style="height:inherit; width:inherit;">
+  <% parallaxImages.forEach(function (imgObject,n){ %>
+    <% if(n!=parallaxImages.length-1){ %>
+    <div class="jparallax-layer" 
+      style="background-image: url('<%- imgObject.source %>');height:<%= imgObject.size %>; width:<%= imgObject.size %>;"></div>
+  <% } else { %> 
+    <div class="jparallax-layer" 
+      style="background-image: url('<%- imgObject.source %>');height:<%= imgObject.size %>; width:<%= imgObject.size %>;"></div>
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, <%= parseFloat(banner_mask_alpha) %>)">
+          <div class="banner-text text-center fade-in-up">
+            <div class="h2">
+              <% if(theme.fun_features.typing.enable && in_scope(theme.fun_features.typing.scope)) { %>
+                <span id="subtitle" data-typed-text="<%= subtitle %>"></span>
+              <% } else { %>
+                <span id="subtitle"><%- subtitle %></span>
+              <% } %>
 
-<div id="banner" class="banner" <%- theme.banner && theme.banner.parallax && 'parallax=true' %>
+            </div>
+            <% if (is_post()) { %>
+              <%- inject_point('postMetaTop') %>
+            <% } %>
+          </div>
+          
+      <% if (theme.scroll_down_arrow.enable && theme.scroll_down_arrow.banner_height_limit <= banner_img_height && page.layout !== '404') { %>
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      <% } %>
+        </div>
+      </div>
+  <% }}); %>
+
+</div>
+<% } else { %>
+<% var banner_img = page.banner_img || theme.index.banner_img %>
+<div id="banner" class="banner" <%- theme.banner && theme.banner.parallax_scrolling && 'parallax=true' %>
      style="background: url('<%- url_for(banner_img) %>') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, <%= parseFloat(banner_mask_alpha) %>)">
@@ -31,3 +75,4 @@ var subtitle = page.subtitle || page.title
     </div>
   </div>
 </div>
+<% } %>

@@ -400,7 +400,46 @@ search:
 banner:
   # 视差滚动，图片与板块会随着屏幕滚动产生视差效果
   # Scrolling parallax
-  parallax: true
+  parallax_scrolling: true
+
+  # 视差效果，图层会随着鼠标产生视差效果
+  # Mouse moving parallax
+  parallax:
+    
+    # 是否启用视差效果
+    # enable or not
+    enable: true
+
+    # 在指定页面开启，不填则在所有页面开启
+    # Enable in specified page, all pages by default
+    # Options: home | post | tag | category | about | links | page | 404
+    scope: []
+    
+    # 视差图层（仅在首页起效果）
+    # images used for parallaxing (only used on the home page)
+    images:
+
+      # 图片源
+      # image source
+      - source: '/img/default.png'
+      
+        # 图层大小，100%则必须指定 yparallax 和 xparallax 才会移动！
+        # layout size
+        size: '120%'
+
+        # 允许垂直移动的最大距离，auto 或为空则根据图像大小自动计算、
+        # maximum moving length vertically, if set to 'auto' or is empty, this is calculated automatically against image size
+        yparallax: '20%'
+
+        # 允许水平移动的最大距离，auto 或为空则根据图像大小自动计算
+        # maximum moving length horizontally, if set to 'auto' or is empty, this is calculated automatically against image size
+        xparallax: '20%'
+
+      - source: '/img/favicon.png'
+        size: '90%'
+        yparallax: 'auto'
+        xparallax: 'auto'
+
 
   # 图片最小的宽高比，以免图片两边被过度裁剪，适用于移动端竖屏时，如需关闭设为 0
   # Minimum ratio of width to height, applicable to the vertical screen of mobile device, if you need to close it, set it to 0
@@ -479,8 +518,8 @@ footer:
 # Home Page
 #---------------------------
 index:
-  # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同
-  # Path of Banner image, can be a relative path or an absolute path, the same on other pages
+  # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同（如果配置单独视差图层则不生效）
+  # Path of Banner image, can be a relative path or an absolute path, the same on other pages(if seperate parallaxing images configured, this is not going to be enableds )
   banner_img: /img/default.png
 
   # 头图高度，屏幕百分比

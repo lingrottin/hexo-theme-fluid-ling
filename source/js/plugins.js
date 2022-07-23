@@ -161,5 +161,15 @@ Fluid.plugins = {
         });
       }
     });
+  },
+  jParallax: function(){
+		$(document).ready(function(){
+			// Declare parallax on layers
+			$('.jparallax-layout').parallax({
+				mouseport: $(".jparallax-viewport")
+			});
+		});
+	
   }
+
 };
