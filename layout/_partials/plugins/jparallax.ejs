@@ -17,19 +17,26 @@
         jParallaxArg+=" }";
     });
     import_script(`<script type="text/javascript" src="${ theme.static_prefix.internal_js + '/jquery.parallax.js'}"></script>
-<script type="text/javascript">var mobile=(function(){
-      var info = navigator.userAgent
-      var isPhone = /mobile/i.test(info)
-      return isPhone
-    })();
-function initjParallax(_resize) {
+<script type="text/javascript">var firstScroll=false;
+var mobile=(function(){
+    var info = navigator.userAgent
+    var isPhone = /mobile/i.test(info)
+    return isPhone
+})();
+$(window).resize(function () { 
     if(!mobile){
-    	if (_resize) { jQuery('.jparallax-layer').unparallax(); }
-	    jQuery('.jparallax-layer').parallax({} ${jParallaxArg});
+        var element=$('.jparallax-layer');
+        element.unparallax();
+        element.css('top', 'auto');
+        element.css('margin-top', 'auto');
+        element.css('left', 'auto');
+        element.css('margin-left', 'auto');
+        element.parallax({} ${jParallaxArg});
     }
-};
-window.addEventListener("resize", function () { // 不用 jQuery 的事件是因为 jq 在窗口大小变化完成之后调用，会使图像不自然
-	initjParallax(true)
 });
-window.onload= function(){initjParallax(false);};</script>`);
+// 因为 banner 的位置本就在 import_script 函数注入的 HTML 代码之前
+// 所以这里不用 $(window).load。
+if(!mobile){
+    $('.jparallax-layer').parallax({} ${jParallaxArg});
+}</script>`);
 %>
