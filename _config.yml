@@ -435,7 +435,7 @@ banner:
         # maximum moving length horizontally, if set to 'auto' or is empty, this is calculated automatically against image size
         xparallax: '20%'
 
-      - source: '/img/favicon.png'
+      - source: '/img/default_l2.png'
         size: '90%'
         yparallax: 'auto'
         xparallax: 'auto'
