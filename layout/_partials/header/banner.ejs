@@ -13,7 +13,8 @@ var parallaxImages=((function(){
   else{return [{"source": theme.index.banner_img, "size": '120%'}];}
 })());
 %>
-<div id="banner" class="banner  text-center jparallax-viewport" <%- theme.banner && theme.banner.parallax_scrolling && 'parallax=true' %> style="height:inherit; width:inherit;">
+<div id="banner" class="banner" <%- theme.banner && theme.banner.parallax_scrolling && 'parallax=true' %>>
+  <div class="full-bg-img text-center">
   <% parallaxImages.forEach(function (imgObject,n){ %>
     <% if(n!=parallaxImages.length-1){ %>
     <div class="jparallax-layer" 
@@ -21,7 +22,7 @@ var parallaxImages=((function(){
   <% } else { %> 
     <div class="jparallax-layer" 
       style="background-image: url('<%- imgObject.source %>');height:<%= imgObject.size %>; width:<%= imgObject.size %>;"></div>
-      <div class="full-bg-img">
+      
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, <%= parseFloat(banner_mask_alpha) %>)">
           <div class="banner-text text-center fade-in-up">
             <div class="h2">
