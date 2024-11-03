@@ -30,7 +30,7 @@
 
 <p align="center">
   <span>Preview: </span>
-  <a href="https://hexo.fluid-dev.com/">Fluid's blog</a>&nbsp&nbsp&nbsp&nbsp
+  <a href="https://hexo.fluid-dev.com/">Fluid's blog</a> | 
   <a href="https://zkqiang.cn">zkqiang's blog</a>
 </p>
 
@@ -115,7 +115,7 @@ About content
 
 English docs translator: [@EatRice](https://eatrice.top/) [@橙子杀手](https://ruru.eatrice.top) [@Sinetian](https://sinetian.github.io/)
 
-Contributors outside PR: [@zhugaoqi](https://github.com/zhugaoqi) [@julydate](https://github.com/julydate)
+Contributors outside PR: [@zhugaoqi](https://github.com/zhugaoqi) [@julydate](https://github.com/julydate) [@xiyuvi](https://xiyu.pro/)
 
 ## Support
 
@@ -127,10 +127,10 @@ If you find this project helpful and would like to support its development, plea
       <th align="center" style="width: 240px;">
         <div>
           <a href="https://etherscan.io/address/0x0021395954710be29c0BFDCB3f98f4D2fa5A1448">
-            <img src="https://avatars.githubusercontent.com/u/6250754?s=200&v=4" height="200px" alt="ERC20 Token">
+            <img src="https://avatars.githubusercontent.com/u/6250754?s=200&v=4" height="200px" alt="Ethereum">
           </a>
           <br>
-          <sub>ERC20 Token: 0x0021395954710<br>be29c0BFDCB3f98f4D2fa5A1448</sub>
+          <sub>Ethereum: 0x0021395954710<br>be29c0BFDCB3f98f4D2fa5A1448</sub>
         </div>
       </th>
     </tr>
